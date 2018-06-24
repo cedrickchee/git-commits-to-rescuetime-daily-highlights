@@ -33,7 +33,7 @@ You may not want to log all commit messages, especially if they are just for sma
 
 To ignore a short commit message:
 
-    if [[ ${#MESSAGE} -gt 15 ]]; then
+    if [[ ${MESSAGE} -gt 15 ]]; then
       curl ...
     fi
 
@@ -45,6 +45,6 @@ To ignore a commit message containing the string '_IGNORE_':
 
 To ignore both of the above conditions:
 
-    if [[ ${#MESSAGE} -gt 15 && "$MESSAGE" != *_IGNORE_* ]]; then
+    if [[ ${MESSAGE} -gt 15 && "$MESSAGE" != *_IGNORE_* ]]; then
       curl ...
     fi
