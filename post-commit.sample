@@ -12,13 +12,13 @@
 # 2. Update the value of API_KEY below with a valid RescueTime API key.
 #    [ you can generate a key at https://www.rescuetime.com/anapi/manage ]
 
-echo "post commit started"
+printf "post commit started\n"
 
 API_KEY=PUT_YOUR_API_KEY_HERE
 
 # REQUIRED FIELDS - Today's date and commit message
 
-MESSAGE=$(git log -1 HEAD --pretty=format:%s)
+MESSAGE='REPO-NAME: '$(git log -1 HEAD --pretty=format:%s)
 DATE_TODAY=$(date +"%Y-%m-%d")
 
 # You can edit the LABEL value if you would rather
@@ -30,7 +30,7 @@ LABEL='Code Commit'
 
 if [[ ${#MESSAGE} -gt 16 ]]; then
   curl --data "key=$API_KEY&highlight_date=$DATE_TODAY&description=$MESSAGE&source=$LABEL" https://www.rescuetime.com/anapi/highlights_post
-  echo "log commit to rescuetime highlights"
+  printf "\nlog commit to rescuetime highlights"
 fi
 
-echo "post commit finished"
+printf "\npost commit finished\n"
